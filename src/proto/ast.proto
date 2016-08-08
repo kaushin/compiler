@@ -30,6 +30,7 @@ message Declaration {
 	repeated Declaration nested_declarations = 8;
 	repeated Comment comments = 9;
 //	required PositionInfo position = 10;
+	optional SpecStatement specs = 11;
 }
 
 enum TypeKind {
@@ -63,6 +64,7 @@ message Method {
 	repeated Statement statements = 7;
 	repeated Comment comments = 8;
 //	required PositionInfo position = 9;
+	repeated SpecCase case = 10;
 }
 
 message Variable {
@@ -99,6 +101,33 @@ message Statement {
 		THROW = 17;
 		CATCH = 18;
 		EMPTY = 19;
+		SPEC_REQUIRES = 20;
+		SPEC_ENSURES = 21;
+		SPEC_SIGNALS = 22;
+		SPEC_SIGNALS_ONLY = 23;
+		SPEC_ASSIGNABLE = 24;
+		SPEC_MAINTAINING = 25;
+		SPEC_ASSUME = 26;
+		SPEC_SET = 27;
+		SPEC_DIVERGES = 28;
+		SPEC_ACCESSIBLE = 29;
+		SPEC_CAPTURES = 30;
+		SPEC_CALLABLE = 31;
+		SPEC_WHEN = 32;
+		SPEC_DURATION = 33;
+		SPEC_MEASURES = 34;
+		SPEC_IN = 35;
+		SPEC_INVARIANT = 36;
+		SPEC_REPRESENTS = 37;
+		SPEC_INITIALLY = 38;
+		SPEC_TYPE = 39;
+		SPEC_BEHAVIOR = 40;
+		SPEC_BEHAVIOUR = 41;
+		SPEC_NORMAL_BEHAVIOR = 42;
+		SPEC_NORMAL_BEHAVIOUR = 43;
+		SPEC_EXCEPTIONAL_BEHAVIOR = 44;
+		SPEC_EXCEPTIONAL_BEHAVIOUR = 45;
+		SPEC_ASSERT = 46;
 	}
 	required StatementKind kind = 1;
 	repeated Comment comments = 2;
@@ -110,6 +139,7 @@ message Statement {
 	optional Declaration type_declaration = 8;
 	optional Expression expression = 9;
 //	required PositionInfo position = 10;
+	optional SpecStatement specs = 11;
 }
 
 message Expression {
@@ -167,6 +197,23 @@ message Expression {
 		METHOD_REFERENCE = 50;
 		LAMBDA = 51;
 		ANON_METHOD = 52;
+		SPEC_RESULT = 53;
+		SPEC_OLD = 54;
+		SPEC_FRESH = 55;
+		SPEC_NONNULLELEMENTS = 56;
+		SPEC_TYPEOF = 57;
+		SPEC_ELEMTYPE = 58;
+		SPEC_TYPE = 59;
+		SPEC_FORALL = 60;
+		SPEC_EXISTS = 61;
+		SPEC_SUBTYPE = 62;
+		SPEC_EQUIVALENCE = 63;
+		SPEC_INEQUIVALENCE = 64;
+		SPEC_FORWARD = 65;
+		SPEC_REVERSE = 66;
+		SPEC_NOTHING = 67;
+		SPEC_EVERYTHING = 68;
+		SPEC_NOTSPECIFIED = 69;
 	}
 	required ExpressionKind kind = 1;
 	repeated Expression expressions = 2;
@@ -195,12 +242,21 @@ message Modifier {
 		SYNCHRONIZED = 5;
 		SYNC = 5;
 		ABSTRACT = 6;
+		SPEC_INSTANCE = 7;
+		SPEC_MODEL = 8;
+		SPEC_GHOST = 9;
+		SPEC_HELPER = 10;
+		SPEC_REP = 11;
+		SPEC_PEER = 12;
+		SPEC_PURE = 13;
 	}
 	enum Visibility {
 		PUBLIC = 1;
 		PRIVATE = 2;
 		PROTECTED = 3;
 		NAMESPACE = 4;
+		SPEC_PUBLIC = 5;
+		SPEC_PROTECTED = 6;
 	}
 	required ModifierKind kind = 1;
 	optional Visibility visibility = 2;
@@ -209,6 +265,11 @@ message Modifier {
 	repeated Expression annotation_values = 5;
 	optional string other = 6;
 //	required PositionInfo position = 7;
+}
+
+message SpecCase {
+	repeated Modifier modifiers = 1;
+	repeated Statement statements = 2;
 }
 
 message Comment {
@@ -234,4 +295,24 @@ message PositionInfo {
 	required int32 start_col = 4;
 	required int32 end_line = 5;
 	required int32 end_col = 6;
+}
+
+message SpecDeclaration {
+	repeated Modifier modifiers = 1;
+	//repeated Variable fields = 2;
+	repeated Statement specs = 3;
+}
+
+message SpecMethod {
+	repeated SpecCase case = 1;
+	repeated Modifier modifiers = 2;
+	//repeated Variable arguments = 3;
+}
+
+message SpecStatement {
+	repeated Statement statements = 1;
+}
+
+message SpecVariable {
+	repeated Modifier modifiers = 1;
 }
