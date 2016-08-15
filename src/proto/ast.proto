@@ -214,6 +214,12 @@ message Expression {
 		SPEC_NOTHING = 67;
 		SPEC_EVERYTHING = 68;
 		SPEC_NOTSPECIFIED = 69;
+		NEXT = 70;
+		GLOBALLY = 71;
+		FINALLY = 72;
+		UNTIL = 73;
+		RELEASE = 74;
+		INPLY = 75;
 	}
 	required ExpressionKind kind = 1;
 	repeated Expression expressions = 2;
