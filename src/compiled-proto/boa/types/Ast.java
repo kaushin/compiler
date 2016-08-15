@@ -22330,6 +22330,32 @@ public final class Ast {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_boa_types_PositionInfo_fieldAccessorTable;
+      
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_boa_types_SpecCase_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_boa_types_SpecCase_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_boa_types_SpecDeclaration_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_boa_types_SpecDeclaration_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_boa_types_SpecMethod_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_boa_types_SpecMethod_fieldAccessorTable;
+   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_boa_types_SpecStatement_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_boa_types_SpecStatement_fieldAccessorTable;
+   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_boa_types_SpecVariable_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_boa_types_SpecVariable_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
