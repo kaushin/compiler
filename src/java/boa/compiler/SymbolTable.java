@@ -1,5 +1,6 @@
 /*
- * Copyright 2014, Anthony Urso, Hridesh Rajan, Robert Dyer, 
+ * Copyright 2016, Anthony Urso, Hridesh Rajan, Robert Dyer, Jingyi Su
+ *                 Bowling Green State University
  *                 and Iowa State University of Science and Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,6 +37,7 @@ import boa.compiler.ast.Operand;
  * @author anthonyu
  * @author rdyer
  * @author rramu
+ * @author jsu
  */
 public class SymbolTable {
 	private static HashMap<String, Class<?>> aggregators;
@@ -124,6 +126,11 @@ public class SymbolTable {
 		idmap.put("CFG", new CFGProtoTuple());
 		idmap.put("CFGNode", new CFGNodeProtoTuple());
 		idmap.put("CFGEdge", new CFGEdgeProtoTuple());
+		idmap.put("SpecCase", new SpecCaseProtoTuple());
+		idmap.put("SpecDeclaration", new SpecDeclarationProtoTuple());
+		idmap.put("SpecMethod", new SpecMethodProtoTuple());
+		idmap.put("SpecStatement", new SpecStatementProtoTuple());
+		idmap.put("SpecVariable", new SpecVariableProtoTuple());
 
 		globalFunctions = new FunctionTrie();
 
@@ -196,6 +203,11 @@ public class SymbolTable {
 		globalFunctions.addFunction("current", new BoaFunction(new StatementProtoTuple(), new BoaType[] { new StatementProtoTuple() }, ""));
 		globalFunctions.addFunction("current", new BoaFunction(new TypeProtoTuple(), new BoaType[] { new TypeProtoTuple() }, ""));
 		globalFunctions.addFunction("current", new BoaFunction(new VariableProtoTuple(), new BoaType[] { new VariableProtoTuple() }, ""));
+		globalFunctions.addFunction("current", new BoaFunction(new SpecCaseProtoTuple(), new BoaType[] { new SpecCaseProtoTuple() }, ""));
+		globalFunctions.addFunction("current", new BoaFunction(new SpecDeclarationProtoTuple(), new BoaType[] { new SpecDeclarationProtoTuple() }, ""));
+		globalFunctions.addFunction("current", new BoaFunction(new SpecMethodProtoTuple(), new BoaType[] { new SpecMethodProtoTuple() }, ""));
+		globalFunctions.addFunction("current", new BoaFunction(new SpecStatementProtoTuple(), new BoaType[] { new SpecStatementProtoTuple() }, ""));
+		globalFunctions.addFunction("current", new BoaFunction(new SpecVariableProtoTuple(), new BoaType[] { new SpecVariableProtoTuple() }, ""));
 
 		// proto to string
 		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new ASTRootProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
@@ -219,6 +231,11 @@ public class SymbolTable {
 		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new StatementProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
 		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new TypeProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
 		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new VariableProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
+		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new SpecCaseProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
+		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new SpecDeclarationProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
+		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new SpecMethodProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
+		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new SpecStatementProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
+		globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new SpecVariableProtoTuple() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
 
 		// FIXME the json library doesnt support enums
 		//globalFunctions.addFunction("string", new BoaFunction(new BoaString(), new BoaType[] { new ChangeKindProtoMap() }, "com.googlecode.protobuf.format.JsonFormat.printToString(${0})"));
@@ -284,6 +301,11 @@ public class SymbolTable {
 		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new TypeProtoTuple() }, "((long)${0}.hashCode())"));
 		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new VariableProtoTuple() }, "((long)${0}.hashCode())"));
 		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new VisibilityProtoMap() }, "((long)${0}.hashCode())"));
+		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new SpecCaseProtoTuple() }, "((long)${0}.hashCode())"));
+		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new SpecDeclarationProtoTuple() }, "((long)${0}.hashCode())"));
+		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new SpecMethodProtoTuple() }, "((long)${0}.hashCode())"));
+		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new SpecStatementProtoTuple() }, "((long)${0}.hashCode())"));
+		globalFunctions.addFunction("hash", new BoaFunction(new BoaInt(), new BoaType[] { new SpecVariableProtoTuple() }, "((long)${0}.hashCode())"));
 
 		// int to float
 		globalFunctions.addFunction("float", new BoaFunction(new BoaFloat(), new BoaScalar[] { new BoaInt() }, "(double)${0}"));
