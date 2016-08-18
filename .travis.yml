@@ -1,5 +1,8 @@
 language: boa
 script: ant test
+branches:
+  except:
+    - Specs
 notifications:
   email:
     recipients:
