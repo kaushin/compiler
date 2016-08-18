@@ -296,10 +296,10 @@ public abstract class BaseTest {
 				fail("expected to see exception: " + error);
 		} catch (final Exception e) {
 			if (error == null) {
-				if (e.getMessage() == null) {
-					e.printStackTrace();
-					fail("unexpected exception");
-				} else
+				e.printStackTrace();
+				if (e.getMessage() == null)
+					fail("found unexpected exception");
+				else
 					fail("found unexpected exception: " + e.getMessage());
 			} else
 				assertEquals(error, e.getMessage());
