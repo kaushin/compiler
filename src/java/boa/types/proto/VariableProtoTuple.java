@@ -52,6 +52,9 @@ public class VariableProtoTuple extends BoaProtoTuple {
 
 		names.put("comments", counter++);
 		members.add(new BoaProtoList(new CommentProtoTuple()));
+
+		names.put("specs", counter++);
+		members.add(new SpecStatementProtoTuple());
 	}
 
 	/**
