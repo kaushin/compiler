@@ -1,12 +1,12 @@
-language: boa
+language: java
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+  - openjdk6
 script: ant test
-branches:
-  except:
-    - Specs
 notifications:
   email:
     recipients:
-      - hridesh@iastate.edu
       - rdyer@iastate.edu
     on_success: change
     on_failure: always
