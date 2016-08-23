@@ -31,6 +31,7 @@ import boa.types.BoaType;
  * A {@link SpecCaseProtoTuple}.
  * 
  * @author rdyer
+ * @author jsu
  */
 public class SpecCaseProtoTuple extends BoaProtoTuple {
         private final static List<BoaType> members = new ArrayList<BoaType>();

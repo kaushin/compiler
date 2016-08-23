@@ -64,7 +64,6 @@ message Method {
 	repeated Statement statements = 7;
 	repeated Comment comments = 8;
 //	required PositionInfo position = 9;
-	repeated SpecCase case = 10;
 }
 
 message Variable {
@@ -305,14 +304,12 @@ message PositionInfo {
 
 message SpecDeclaration {
 	repeated Modifier modifiers = 1;
-	//repeated Variable fields = 2;
-	repeated Statement specs = 3;
+	repeated Statement specs = 2;
 }
 
 message SpecMethod {
 	repeated SpecCase case = 1;
 	repeated Modifier modifiers = 2;
-	//repeated Variable arguments = 3;
 }
 
 message SpecStatement {
