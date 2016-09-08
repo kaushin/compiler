@@ -31,6 +31,7 @@ message Declaration {
 	repeated Comment comments = 9;
 //	required PositionInfo position = 10;
 	optional SpecStatement specs = 11;
+	required string key = 12;
 }
 
 enum TypeKind {
@@ -64,6 +65,7 @@ message Method {
 	repeated Statement statements = 7;
 	repeated Comment comments = 8;
 //	required PositionInfo position = 9;
+	required string key = 10;
 }
 
 message Variable {
@@ -73,6 +75,7 @@ message Variable {
 	optional Expression initializer = 4;
 	repeated Comment comments = 5;
 //	required PositionInfo position = 6;
+	required string key = 7;
 }
 
 message Statement {
@@ -139,6 +142,7 @@ message Statement {
 	optional Expression expression = 9;
 //	required PositionInfo position = 10;
 	optional SpecStatement specs = 11;
+	required string key = 12;
 }
 
 message Expression {

@@ -42,7 +42,6 @@ public class SpecVariableProtoTuple extends BoaProtoTuple {
 
                 names.put("modifiers", counter++);
                 members.add(new BoaProtoList(new ModifierProtoTuple()));
-
         }
 
         /**

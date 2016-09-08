@@ -1,5 +1,6 @@
 /*
- * Copyright 2014, Hridesh Rajan, Robert Dyer, 
+ * Copyright 2014, Hridesh Rajan, Robert Dyer, Jingyi Su
+ *                 Bowling Green State University
  *                 and Iowa State University of Science and Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,11 +26,14 @@ import boa.types.BoaProtoList;
 import boa.types.BoaProtoTuple;
 import boa.types.BoaType;
 import boa.types.proto.enums.StatementKindProtoMap;
+import boa.types.BoaString;
+
 
 /**
  * A {@link StatementProtoTuple}.
  * 
  * @author rdyer
+ * @author jsu
  */
 public class StatementProtoTuple extends BoaProtoTuple {
 	private final static List<BoaType> members = new ArrayList<BoaType>();
@@ -64,6 +68,12 @@ public class StatementProtoTuple extends BoaProtoTuple {
 
 		names.put("expression", counter++);
 		members.add(new ExpressionProtoTuple());
+
+		names.put("specs", counter++);
+		members.add(new SpecStatementProtoTuple());
+
+		names.put("key", counter++);
+		members.add(new BoaString());
 	}
 
 	/**

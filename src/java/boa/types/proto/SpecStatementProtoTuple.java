@@ -40,9 +40,8 @@ public class SpecStatementProtoTuple extends BoaProtoTuple {
         static {
                 int counter = 0;
 
-		names.put("statements", counter++);
-                members.add(new BoaProtoList(new SpecStatementProtoTuple()));
-                
+				names.put("statements", counter++);
+				members.add(new BoaProtoList(new SpecStatementProtoTuple()));       
         }
 
         /**

@@ -71,6 +71,8 @@ public class DeclarationProtoTuple extends BoaProtoTuple {
 		names.put("specs", counter++);
 		members.add(new BoaProtoList(new SpecStatementProtoTuple()));
 
+		names.put("key", counter++);
+		members.add(new BoaString());
 	}
 
 	/**
