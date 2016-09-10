@@ -39,6 +39,7 @@ public class Java8Visitor extends Java7Visitor {
 	public boolean visit(MethodDeclaration node) {
 		List<boa.types.Ast.Method> list = methods.peek();
 		Method.Builder b = Method.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		if (node.isConstructor())
 			b.setName("<init>");
@@ -82,6 +83,7 @@ public class Java8Visitor extends Java7Visitor {
 		}
 		if (node.getReceiverType() != null) {
 			Variable.Builder vb = Variable.newBuilder();
+			vb.setKey(""); // FIXME rdyer need to determine how to set keys
 //			vb.setPosition(pos.build()); // FIXME
 			vb.setName("this");
 			boa.types.Ast.Type.Builder tp = boa.types.Ast.Type.newBuilder();
@@ -95,6 +97,7 @@ public class Java8Visitor extends Java7Visitor {
 		for (Object o : node.parameters()) {
 			SingleVariableDeclaration ex = (SingleVariableDeclaration)o;
 			Variable.Builder vb = Variable.newBuilder();
+			vb.setKey(""); // FIXME rdyer need to determine how to set keys
 //			vb.setPosition(pos.build()); // FIXME
 			vb.setName(ex.getName().getFullyQualifiedName());
 			for (Object m : ex.modifiers()) {
@@ -140,6 +143,7 @@ public class Java8Visitor extends Java7Visitor {
 	@Override
 	public boolean visit(LambdaExpression node) {
 		Method.Builder b = Method.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 		b.setName("");
 		boa.types.Ast.Type.Builder rt = boa.types.Ast.Type.newBuilder();
 		rt.setName(getIndex(""));
@@ -148,6 +152,7 @@ public class Java8Visitor extends Java7Visitor {
 		for (Object o : node.parameters()) {
 			VariableDeclaration ex = (VariableDeclaration)o;
 			Variable.Builder vb = Variable.newBuilder();
+			vb.setKey(""); // FIXME rdyer need to determine how to set keys
 			vb.setName(ex.getName().getFullyQualifiedName());
 			if (o instanceof SingleVariableDeclaration) {
 				SingleVariableDeclaration svd = (SingleVariableDeclaration)o;
@@ -176,6 +181,7 @@ public class Java8Visitor extends Java7Visitor {
 			if (node.getBody() instanceof org.eclipse.jdt.core.dom.Expression) {
 				boa.types.Ast.Expression e = expressions.pop();
 				boa.types.Ast.Statement.Builder sb = boa.types.Ast.Statement.newBuilder();
+				sb.setKey(""); // FIXME rdyer need to determine how to set keys
 				sb.setKind(boa.types.Ast.Statement.StatementKind.EXPRESSION);
 				sb.setExpression(e);
 				statements.peek().add(sb.build());

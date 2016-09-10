@@ -155,6 +155,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(TypeDeclaration node) {
 		boa.types.Ast.Declaration.Builder b = boa.types.Ast.Declaration.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		b.setName(node.getName().getFullyQualifiedName());
 		if (node.isInterface())
@@ -228,6 +229,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(AnonymousClassDeclaration node) {
 		boa.types.Ast.Declaration.Builder b = boa.types.Ast.Declaration.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		b.setName("");
 		b.setKind(boa.types.Ast.TypeKind.ANONYMOUS);
@@ -261,6 +263,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(EnumDeclaration node) {
 		boa.types.Ast.Declaration.Builder b = boa.types.Ast.Declaration.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		b.setName(node.getName().getFullyQualifiedName());
 		b.setKind(boa.types.Ast.TypeKind.ENUM);
@@ -272,6 +275,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(AnnotationTypeDeclaration node) {
 		boa.types.Ast.Declaration.Builder b = boa.types.Ast.Declaration.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		b.setName(node.getName().getFullyQualifiedName());
 		b.setKind(boa.types.Ast.TypeKind.ANNOTATION);
@@ -287,6 +291,7 @@ public class Java7Visitor extends ASTVisitor {
 	public boolean visit(MethodDeclaration node) {
 		List<boa.types.Ast.Method> list = methods.peek();
 		Method.Builder b = Method.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		if (node.isConstructor())
 			b.setName("<init>");
@@ -330,6 +335,7 @@ public class Java7Visitor extends ASTVisitor {
 		for (Object o : node.parameters()) {
 			SingleVariableDeclaration ex = (SingleVariableDeclaration)o;
 			Variable.Builder vb = Variable.newBuilder();
+			vb.setKey(""); // FIXME rdyer need to determine how to set keys
 //			vb.setPosition(pos.build()); // FIXME
 			vb.setName(ex.getName().getFullyQualifiedName());
 			for (Object m : ex.modifiers()) {
@@ -374,6 +380,7 @@ public class Java7Visitor extends ASTVisitor {
 	public boolean visit(AnnotationTypeMemberDeclaration node) {
 		List<boa.types.Ast.Method> list = methods.peek();
 		Method.Builder b = Method.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		b.setName(node.getName().getFullyQualifiedName());
 		for (Object m : node.modifiers()) {
@@ -389,6 +396,7 @@ public class Java7Visitor extends ASTVisitor {
 		b.setReturnType(tb.build());
 		if (node.getDefault() != null) {
 			boa.types.Ast.Statement.Builder sb = boa.types.Ast.Statement.newBuilder();
+			sb.setKey(""); // FIXME rdyer need to determine how to set keys
 	//		sb.setPosition(pos.build());
 			sb.setKind(boa.types.Ast.Statement.StatementKind.EXPRESSION);
 			node.getDefault().accept(this);
@@ -405,6 +413,7 @@ public class Java7Visitor extends ASTVisitor {
 		for (Object o : node.fragments()) {
 			VariableDeclarationFragment f = (VariableDeclarationFragment)o;
 			Variable.Builder b = Variable.newBuilder();
+			b.setKey(""); // FIXME rdyer need to determine how to set keys
 //			b.setPosition(pos.build()); // FIXME
 			b.setName(f.getName().getFullyQualifiedName());
 			for (Object m : node.modifiers()) {
@@ -523,6 +532,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(AssertStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.ASSERT);
@@ -539,6 +549,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(Block node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.BLOCK);
@@ -555,6 +566,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(BreakStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.BREAK);
@@ -572,11 +584,13 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(CatchClause node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.CATCH);
 		SingleVariableDeclaration ex = node.getException();
 		Variable.Builder vb = Variable.newBuilder();
+		vb.setKey(""); // FIXME rdyer need to determine how to set keys
 //		vb.setPosition(pos.build());// FIXME
 		vb.setName(ex.getName().getFullyQualifiedName());
 		for (Object m : ex.modifiers()) {
@@ -610,6 +624,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(ConstructorInvocation node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.EXPRESSION);
@@ -635,6 +650,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(ContinueStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.CONTINUE);
@@ -652,6 +668,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(DoStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.DO);
@@ -668,6 +685,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(EmptyStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.EMPTY);
@@ -678,11 +696,13 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(EnhancedForStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.FOR);
 		SingleVariableDeclaration ex = node.getParameter();
 		Variable.Builder vb = Variable.newBuilder();
+		vb.setKey(""); // FIXME rdyer need to determine how to set keys
 //		vb.setPosition(pos.build());//FIXME
 		vb.setName(ex.getName().getFullyQualifiedName());
 		for (Object m : ex.modifiers()) {
@@ -717,6 +737,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(ExpressionStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.EXPRESSION);
@@ -729,6 +750,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(ForStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.FOR);
@@ -755,6 +777,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(IfStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.IF);
@@ -779,6 +802,7 @@ public class Java7Visitor extends ASTVisitor {
 	public boolean visit(Initializer node) {
 		List<boa.types.Ast.Method> list = methods.peek();
 		Method.Builder b = Method.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		b.setName("<clinit>");
 		for (Object m : node.modifiers()) {
@@ -805,6 +829,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(LabeledStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.LABEL);
@@ -824,6 +849,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(ReturnStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.RETURN);
@@ -838,6 +864,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(SuperConstructorInvocation node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.EXPRESSION);
@@ -867,6 +894,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(SwitchCase node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.CASE);
@@ -881,6 +909,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(SwitchStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.SWITCH);
@@ -898,6 +927,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(SynchronizedStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.SYNCHRONIZED);
@@ -915,6 +945,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(ThrowStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.THROW);
@@ -927,6 +958,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(TryStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.TRY);
@@ -950,6 +982,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(TypeDeclarationStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.TYPEDECL);
@@ -964,6 +997,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(VariableDeclarationStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.EXPRESSION);
@@ -973,6 +1007,7 @@ public class Java7Visitor extends ASTVisitor {
 		for (Object o : node.fragments()) {
 			VariableDeclarationFragment f = (VariableDeclarationFragment)o;
 			Variable.Builder vb = Variable.newBuilder();
+			vb.setKey(""); // FIXME rdyer need to determine how to set keys
 //			vb.setPosition(pos.build());//FIXME
 			vb.setName(f.getName().getFullyQualifiedName());
 			for (Object m : node.modifiers()) {
@@ -1003,6 +1038,7 @@ public class Java7Visitor extends ASTVisitor {
 	@Override
 	public boolean visit(WhileStatement node) {
 		boa.types.Ast.Statement.Builder b = boa.types.Ast.Statement.newBuilder();
+		b.setKey(""); // FIXME rdyer need to determine how to set keys
 //		b.setPosition(pos.build());
 		List<boa.types.Ast.Statement> list = statements.peek();
 		b.setKind(boa.types.Ast.Statement.StatementKind.WHILE);
@@ -1467,6 +1503,7 @@ public class Java7Visitor extends ASTVisitor {
 		for (Object o : node.fragments()) {
 			VariableDeclarationFragment f = (VariableDeclarationFragment)o;
 			Variable.Builder b = Variable.newBuilder();
+			b.setKey(""); // FIXME rdyer need to determine how to set keys
 //			b.setPosition(pos.build());//FIXME
 			b.setName(f.getName().getFullyQualifiedName());
 			for (Object m : node.modifiers()) {
