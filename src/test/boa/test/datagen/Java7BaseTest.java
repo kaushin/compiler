@@ -65,7 +65,8 @@ public class Java7BaseTest extends BaseTest {
 			return "";
 		}
 
-		return JsonFormat.printToString(ast.build());
+		// remove the field 'key' as it is a hidden field
+		return JsonFormat.printToString(ast.build()).replaceAll("(?m),\\s*\n\\s*\"key\": \"\"\\s*\n", "\n");
 	}
 
 	protected static String parseWrapped(final String content) {
