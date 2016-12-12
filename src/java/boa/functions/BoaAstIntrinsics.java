@@ -207,8 +207,8 @@ public class BoaAstIntrinsics {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@FunctionSpec(name = "getSpecDeclaration", returnType = "SpecDeclaration", formalParameters = { "Declaration" })
-	public static SpecDeclaration getSpecDeclaration(final Declaration f) {
+	@FunctionSpec(name = "getSpec", returnType = "SpecDeclaration", formalParameters = { "Declaration" })
+	public static SpecDeclaration getSpec(final Declaration f) {
 		final String rowName = f.getKey() + "!!" + f.getName();
 
 		if (specMap == null)
@@ -236,8 +236,8 @@ public class BoaAstIntrinsics {
 	}
 
 	@SuppressWarnings("unchecked")
-	@FunctionSpec(name = "getSpecMethod", returnType = "SpecMethod", formalParameters = { "Method" })
-	public static SpecMethod getSpecMethod(final Method f) {
+	@FunctionSpec(name = "getSpec", returnType = "SpecMethod", formalParameters = { "Method" })
+	public static SpecMethod getSpec(final Method f) {
 		final String rowName = f.getKey() + "!!" + f.getName();
 
 		if (specMap == null)
@@ -265,8 +265,8 @@ public class BoaAstIntrinsics {
 	}
 
 	@SuppressWarnings("unchecked")
-	@FunctionSpec(name = "getSpecStatement", returnType = "SpecStatement", formalParameters = { "Statement" })
-	public static SpecStatement getSpecStatement(final Statement f) {
+	@FunctionSpec(name = "getSpec", returnType = "SpecStatement", formalParameters = { "Statement" })
+	public static SpecStatement getSpec(final Statement f) {
 		final String rowName = f.getKey();
 
 		if (specMap == null)
@@ -294,8 +294,8 @@ public class BoaAstIntrinsics {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@FunctionSpec(name = "getSpecVariable", returnType = "SpecVariable", formalParameters = { "Variable" })
-	public static SpecVariable getSpecVariable(final Variable f) {
+	@FunctionSpec(name = "getSpec", returnType = "SpecVariable", formalParameters = { "Variable" })
+	public static SpecVariable getSpec(final Variable f) {
 		final String rowName = f.getKey() + "!!" + f.getName();
 
 		if (specMap == null)
