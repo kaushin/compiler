@@ -473,18 +473,26 @@ public class TypeCheckingVisitor extends AbstractVisitorNoReturn<SymbolTable> {
 
 		final String selector = n.getId().getToken();
 		BoaType type = env.getOperandType();
+		
 
 		if (type instanceof BoaProtoMap) {
+			
 			if (!((BoaProtoMap) type).hasAttribute(selector))
 				throw new TypeCheckException(n.getId(), type + " has no member named '" + selector + "'");
 		} else if (type instanceof BoaTuple) {
+			System.out.println(selector + "BoaTuple");
+			if(selector.equals("true_branch")){
+
+			}else{
 			if (!((BoaTuple) type).hasMember(selector))
 				throw new TypeCheckException(n.getId(), "'" + type + "' has no member named '" + selector + "'");
-
 			type = ((BoaTuple) type).getMember(selector);
+			}
+			
 			if (type instanceof BoaName)
 				type = ((BoaName) type).getType();
 		} else if (type instanceof BoaEnum) {
+			
 			if (!((BoaEnum) type).hasMember(selector))
 				throw new TypeCheckException(n.getId(), "'" + type + "' has no member named '" + selector + "'");
 			type = ((BoaEnum) type).getMember(selector);
